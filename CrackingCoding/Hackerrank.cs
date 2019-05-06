@@ -985,6 +985,13 @@ namespace CrackingCoding
             return a.Length + b.Length - numEqualChars;
 
         }
+
+        // AlternatingCharacters
+        static int alternatingCharacters(string s)
+        {
+
+
+        }
         #endregion
 
     }

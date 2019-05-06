@@ -989,8 +989,7 @@ namespace CrackingCoding
         // AlternatingCharacters
         static int alternatingCharacters(string s)
         {
-
-
+            return 0;
         }
         #endregion
 

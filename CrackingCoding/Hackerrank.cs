@@ -989,8 +989,106 @@ namespace CrackingCoding
         // AlternatingCharacters
         static int alternatingCharacters(string s)
         {
-            return 0;
+            int deletionNumber = 0;
+            char actualChar = 'A'; 
+            char firstChar;
+            bool first = false;
+
+            foreach (char c in s)
+            {
+                //base case
+                if(!first) {
+                    firstChar = c;
+                    first =  true;
+                    actualChar = c;
+                } else
+                {
+                    if (c == actualChar)
+                    {
+                        deletionNumber++;
+                    } else
+                    {
+                        actualChar = c;
+                    }
+                }
+            }
+            return deletionNumber;
         }
+
+        //Sherlock and the Valid String
+        public static string isValid(string s) {
+            Dictionary<char,int> dict = new Dictionary<char, int>();
+            
+            //We know from corolary that s is not empty string 1<= s <= 10^5
+            int maxValue = 1;
+            bool isSherlockValid = true;
+            int countMax = 0;
+            int countCurr = 0;
+
+            //Fill a dict with number of char occurrences
+            foreach (char c in s)
+            {
+                if(dict.ContainsKey(c))
+                {
+                    //increase the count for that char
+                    dict[c]++;
+
+                    if(dict[c] > maxValue)
+                    {
+                        maxValue = dict[c];
+                    } 
+                } else
+                {
+                    //insert first occurrency of char
+                    dict[c] = 1;
+                }
+            }
+
+
+            int j = dict.Values.Select(i => i).Distinct().Count();
+         
+            
+            foreach (int v in dict.Values)
+            {
+                if (maxValue - v > 1)
+                {
+                    if (j>2) {
+                        isSherlockValid = false;           
+                        break;
+                    }
+
+                    if(j == 2)
+                    {
+                        List<int> lista = dict.Values.Select(i => i).Distinct().ToList();
+                        if(lista.All(l => l > 1))
+                        {
+                            isSherlockValid = false;
+                        }
+                    }
+                }
+
+                //v could be only maxValue or maxValue - 1              
+                if (v == maxValue)
+                {
+                    countMax++;
+                }
+
+                if (v == maxValue - 1)
+                {
+                    countCurr++;
+
+                }
+
+                if (countCurr > 1 && countMax > 1)
+                {
+                    isSherlockValid = false;
+                    break;
+                }
+
+            }
+            return isSherlockValid ? "YES" : "NO";
+        }
+
         #endregion
 
     }

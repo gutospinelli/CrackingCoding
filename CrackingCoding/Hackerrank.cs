@@ -1098,7 +1098,27 @@ namespace CrackingCoding
 
         //Special Palindrome Again
         public static long substrCount(int n, string s) {
-            return 0;
+            long count = 0;
+            for (int i = 0; i < s.Length; i++) {
+                int innerCounter = 1;
+
+                int counterDown = 0;
+                int counterUp = 1;
+                while (i - innerCounter >= 0 && i + innerCounter < s.Length
+                        && s[i - innerCounter] == s[i - 1] && s[i + innerCounter] == s[i - 1]) {
+                    count++;
+                    innerCounter++;
+                }
+
+                while (i - counterDown >= 0 && i + counterUp < s.Length && s[i - counterDown] == s[i]
+                        && s[i + counterUp] == s[i]) {
+                    count++;
+                    counterDown++;
+                    counterUp++;
+                }
+            }
+
+            return count + s.Length;
         }
         #endregion
 

@@ -943,7 +943,7 @@ namespace CrackingCoding
 
         #region String Manipulation
         //Making Anagrams
-        static int makeAnagram(string a, string b)
+        public static int makeAnagram(string a, string b)
         {
             Dictionary<char, int> dictSmaller = new Dictionary<char, int>();
 
@@ -987,7 +987,7 @@ namespace CrackingCoding
         }
 
         // AlternatingCharacters
-        static int alternatingCharacters(string s)
+        public static int alternatingCharacters(string s)
         {
             int deletionNumber = 0;
             char actualChar = 'A'; 
@@ -1060,7 +1060,14 @@ namespace CrackingCoding
                     if(j == 2)
                     {
                         List<int> lista = dict.Values.Select(i => i).Distinct().ToList();
-                        if(lista.All(l => l > 1))
+                        int freqL0 = dict.Values.Where(f => f == lista[0]).Count();
+                        int freqL1 = dict.Values.Where(f => f == lista[1]).Count();
+
+                        if(
+                            ((freqL0 > 1) && (freqL1 > 1)) ||
+                            ((freqL0 == 1) && (lista[0]-1 != lista[1]) && (lista[0]-1 != 0)) ||
+                            ((freqL1 == 1) && (lista[1]-1 != lista[0]) && (lista[1]-1 != 0))
+                          )
                         {
                             isSherlockValid = false;
                         }
@@ -1089,6 +1096,10 @@ namespace CrackingCoding
             return isSherlockValid ? "YES" : "NO";
         }
 
+        //Special Palindrome Again
+        public static long substrCount(int n, string s) {
+            return 0;
+        }
         #endregion
 
     }

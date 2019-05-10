@@ -1120,6 +1120,40 @@ namespace CrackingCoding
 
             return count + s.Length;
         }
+
+        // Common Child 
+        public static int commonChild(string s1, string s2) {
+        //s1, s2: two equal length strings
+            int indexS1 = 0;
+            int indexS2 = 0;
+            int lenght = s1.Length;
+            int childSize = 0;
+            StringBuilder sb = new StringBuilder();
+            bool[] usedCharS1 = new bool[lenght];
+
+            while (indexS2 < lenght)
+            {
+                char c2 = s2[indexS2];
+
+                for(int i = indexS1; i < lenght; i++)
+                {
+                    if(s1[i] == c2 && !usedCharS1[i])
+                    {
+                        childSize++;
+                        sb.Append(c2);
+                        indexS1 = i+1;
+                        break;
+                    } 
+                }
+
+                indexS2++;
+            }
+
+            Console.WriteLine(sb.ToString());
+
+            return childSize;
+
+        }
         #endregion
 
     }

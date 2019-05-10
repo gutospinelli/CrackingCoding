@@ -17,8 +17,9 @@ namespace CrackingCoding
             //Console.WriteLine(q.RemoveDuplicateChars(testString));
             //Console.ReadLine();
             //int[] expenditure = {2, 3, 4, 2, 3, 6, 8, 4, 5};
-            string testCase =  "aaaaabc";
-            Console.WriteLine(Hackerrank.isValid(testCase));
+            string s1 = "HARRY";
+            string s2 = "SALLY";
+            Console.WriteLine(Hackerrank.commonChild(s1,s2));
             Console.ReadLine();
 
         }

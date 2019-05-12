@@ -1143,6 +1143,8 @@ namespace CrackingCoding
                         sb.Append(c2);
                         indexS1 = i+1;
                         break;
+                        //Test VS2019Mac
+
                     } 
                 }
 

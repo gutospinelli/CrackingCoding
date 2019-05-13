@@ -941,7 +941,7 @@ namespace CrackingCoding
 
         #endregion
 
-        #region String Manipulation
+        #region String Manipulation (4/5)
         //Making Anagrams
         public static int makeAnagram(string a, string b)
         {
@@ -1268,6 +1268,11 @@ namespace CrackingCoding
                 return rightLCA;
             }
 
+        }
+
+        //Trees: Is This a Binary Search Tree?
+        public boolean checkBST(Node root) {
+        
         }
 
 

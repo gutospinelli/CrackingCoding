@@ -1169,6 +1169,12 @@ namespace CrackingCoding
     	    public Node left;
     	    public Node right;
         }
+
+        public class NodeHuffman {
+		    public  int frequency; // the frequency of this tree
+    	    public  char data;
+    	    public  Node left, right;
+        }
 	    
         //Height of a Tree
 	    public static int height(Node root) {
@@ -1270,11 +1276,52 @@ namespace CrackingCoding
 
         }
 
-        //Trees: Is This a Binary Search Tree?
+        //Trees: Is This a Binary Search Tree? (Hackerrank site is bugged with this problem. No hidden Main results in runtime Error)
         public static bool checkBST(Node root) {
-            return false;
+            
+            return checkBSTHelper(root,int.MinValue, int.MaxValue);
+
         }
 
+        private static bool checkBSTHelper(Node n, int min, int max)
+        {
+            if(n == null)
+            {
+                return true;
+            }
+            if(min >= n.data || max <= n.data)
+            {
+                return false;
+            }
+            return checkBSTHelper(n.left,min,n.data) && checkBSTHelper(n.right,n.data,max);
+        }
+
+
+
+        //Tree: Huffman Decoding
+        public void decode(String s, NodeHuffman root) {
+            StringBuilder decoded = new StringBuilder();
+
+            NodeHuffman tmp = root;
+            foreach (char c in s)
+            {
+                if(c == '1')
+                {
+                    tmp = tmp.right;
+                } else
+                {
+                    tmp = tmp.left;
+                }
+
+                if(tmp.data != 'ϕ')
+                {
+                    decoded.Append(tmp.data);
+                    tmp = root; //back to the start
+                }
+            }
+
+            Console.WriteLine(decoded.ToString());
+        }
 
         public static Node insert(Node root, int data) {
             if(root == null) {

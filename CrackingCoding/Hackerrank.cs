@@ -1271,8 +1271,8 @@ namespace CrackingCoding
         }
 
         //Trees: Is This a Binary Search Tree?
-        public boolean checkBST(Node root) {
-        
+        public static bool checkBST(Node root) {
+            return false;
         }
 
 

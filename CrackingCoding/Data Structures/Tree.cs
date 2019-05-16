@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 
 namespace CrackingCoding.Data_Structures
@@ -121,5 +122,14 @@ namespace CrackingCoding.Data_Structures
 
     }
 
-    
+    public class Pilha {
+        public Stack stack = new Stack();
+        
+        public void Testes()
+        {
+            
+        }
+
+
+    }
 }

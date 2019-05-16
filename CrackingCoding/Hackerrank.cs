@@ -1173,7 +1173,7 @@ namespace CrackingCoding
         public class NodeHuffman {
 		    public  int frequency; // the frequency of this tree
     	    public  char data;
-    	    public  Node left, right;
+    	    public  NodeHuffman left, right;
         }
 	    
         //Height of a Tree
@@ -1299,7 +1299,7 @@ namespace CrackingCoding
 
 
         //Tree: Huffman Decoding
-        public void decode(String s, NodeHuffman root) {
+        public static void decode(String s, NodeHuffman root) {
             StringBuilder decoded = new StringBuilder();
 
             NodeHuffman tmp = root;

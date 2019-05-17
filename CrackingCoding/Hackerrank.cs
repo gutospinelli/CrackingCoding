@@ -1339,5 +1339,61 @@ namespace CrackingCoding
             }
         }
         #endregion
+
+        #region Dynamic Programming
+        // maxSubsetSum 
+        public static int maxSubsetSum(int[] arr)
+        {
+            return 0;
+
+        }
+        #endregion
+
+        #region Stacks and Queues 
+        //Balanced Brackets
+        public static string isBalanced(string s)
+        {
+            bool balanced = true;
+            Stack<char> stack = new Stack<char>();
+
+            foreach (char c in s)
+            {
+                if (c == '[' || c == '{' || c == '(')
+                {
+                    stack.Push(c);
+                } else
+                {
+                    char tmp;
+                    try
+                    {
+                        tmp = stack.Pop();
+                    }
+                    catch (Exception)
+                    {
+                        balanced = false;
+                        break;
+                    }
+
+
+                    if (
+                        (c == ')' && tmp != '(') ||
+                        (c == ']' && tmp != '[') ||
+                        (c == '}' && tmp != '{') )
+                    {
+                        balanced = false;
+                        break;
+                    }
+                }
+
+            }
+
+            if (stack.Count != 0)
+            {
+                balanced = false;
+            }
+
+            return balanced ? "YES" : "NO";
+        }
+        #endregion
     }
 }

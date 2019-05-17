@@ -22,9 +22,11 @@ namespace CrackingCoding
             //string s2 = "SALLY";
             //Console.WriteLine(Hackerrank.commonChild(s1,s2));
 
-            int[] array = { 4, 2, 3, 1, 7, 6};
-            Node root = Node.treeFromArray(array);
-            root.printTree(root,TreeOrder.postOrder);
+            //int[] array = { 4, 2, 3, 1, 7, 6};
+            //Node root = Node.treeFromArray(array);
+            //root.printTree(root,TreeOrder.postOrder);
+            string test = "([[)";
+            Console.WriteLine(Hackerrank.isBalanced(test));
             Console.ReadLine();
 
         }

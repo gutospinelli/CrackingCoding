@@ -122,14 +122,5 @@ namespace CrackingCoding.Data_Structures
 
     }
 
-    public class Pilha {
-        public Stack stack = new Stack();
-        
-        public void Testes()
-        {
-            
-        }
-
-
-    }
+    
 }

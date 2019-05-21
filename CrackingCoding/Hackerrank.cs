@@ -1396,7 +1396,65 @@ namespace CrackingCoding
         }
 
         //Queues: A tale of Two Stacks
+        //Solution: Class Data_Structures.QueueTwoStacks
         
+        #endregion
+
+        #region Search
+        //Hash Tables: Ice Cream Parlor
+        static void whatFlavors(int[] cost, int money) {
+            //Build a dict to keep costs as keys and corresponding indexes as values
+            Dictionary<int,int> dictCostsAndIndexes = new Dictionary<int, int>();
+
+            int currentCost;
+
+            //Iterate thru the costes
+            for (int i = 0; i < cost.Length; i++)
+            {
+                currentCost = cost[i];
+
+                //If there's a index, different from current index, corresponding to (money - current) cost...
+                //... This indexCost+currentCost = money! We found our solution
+                int index;
+                if (dictCostsAndIndexes.TryGetValue(money - currentCost, out index) && index != i)
+                {
+                    //Ice cream id's start at index 1, that's why we print i+1 index+1
+
+                    if(index < i) {
+                        Console.WriteLine(string.Format("{0} {1}", (index + 1), (i + 1)));
+                    } else
+                    {
+                        Console.WriteLine(string.Format("{0} {1}", (i + 1), (index + 1)));
+                    }
+                    return;
+                }
+                else
+                {
+                    //If there's not a index corresponding to (money - current) cost, we add the current cost and it's index to our dict
+                    dictCostsAndIndexes[currentCost] = i;
+                }
+            }
+        }
+
+        static void whatFlavorsBruteForce(int[] cost, int money) {
+            for (int i = 0; i < cost.Length; i++)
+            {
+                for (int j = i + 1; j < cost.Length; j++)
+                {
+                    if (cost[i] + cost[j] == money)
+                    {
+                        if(j < i) {
+                            Console.WriteLine(string.Format("{0} {1}", (j + 1), (i + 1)));
+                        } else
+                        {
+                            Console.WriteLine(string.Format("{0} {1}", (i + 1), (j + 1)));
+                        }
+                        return;
+                    }
+                }
+            }
+            return;
+        }
         #endregion
     }
 }

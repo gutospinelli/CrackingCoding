@@ -26,7 +26,7 @@ namespace CrackingCoding
             //Node root = Node.treeFromArray(array);
             //root.printTree(root,TreeOrder.postOrder);
             string test = "([[)";
-            Console.WriteLine(Hackerrank.isBalanced(test));
+            Console.WriteLine(StacksAndQueues.isBalanced(test));
             Console.ReadLine();
 
         }

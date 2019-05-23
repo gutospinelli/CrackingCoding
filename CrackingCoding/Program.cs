@@ -1,5 +1,6 @@
 ﻿using CrackingCoding.Data_Structures;
 using System;
+using System.Diagnostics;
 
 namespace CrackingCoding
 {
@@ -28,7 +29,50 @@ namespace CrackingCoding
             //string test = "([[)";
             //Console.WriteLine(StacksAndQueues.isBalanced(test));
 
-            Console.WriteLine(Recursion.stepPerms(5));
+            //Console.WriteLine(Recursion.stepPerms(5));
+
+            //Stopwatch stopWatch = new Stopwatch();
+            //stopWatch.Start();
+            //long i = Recursion.Fibonacci](20); // 20 invocations
+            //long j = Recursion.FibMemoized(30); // 10 invocations
+            //long k = Recursion.FibMemoized(40); // 10 invocations
+            //stopWatch.Stop();
+
+            //Console.WriteLine(i);
+            //Console.WriteLine(j);
+            //Console.WriteLine(k);
+            
+            //// Get the elapsed time as a TimeSpan value.
+            //TimeSpan ts = stopWatch.Elapsed;
+
+            //// Format and display the TimeSpan value.
+            //string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            //    ts.Hours, ts.Minutes, ts.Seconds,
+            //    ts.Milliseconds / 10);
+            //Console.WriteLine("RunTime " + elapsedTime);
+
+
+            //stopWatch = new Stopwatch();
+            //stopWatch.Start();
+            //i = Recursion.FibonacciRecursion(20); // 20 invocations
+            //j = Recursion.FibonacciRecursion(30); // 30 invocations
+            //k = Recursion.FibonacciRecursion(40); // 40 invocations
+            //stopWatch.Stop();
+
+            //Console.WriteLine(i);
+            //Console.WriteLine(j);
+            //Console.WriteLine(k);
+            
+
+            //// Get the elapsed time as a TimeSpan value.
+            //ts = stopWatch.Elapsed;
+
+            //// Format and display the TimeSpan value.
+            //elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            //    ts.Hours, ts.Minutes, ts.Seconds,
+            //    ts.Milliseconds / 10);
+            //Console.WriteLine("RunTime " + elapsedTime);
+
             Console.ReadLine();
 
         }

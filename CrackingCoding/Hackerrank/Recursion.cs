@@ -40,6 +40,16 @@ namespace CrackingCoding
 
         }
 
+        [Memoized]
+        public static long FibMemoized(long n)
+        {
+            if (n == 0L)
+                return 0L;
+            if (n == 1L)
+                return 1L;
+            return FibMemoized(n - 1) + FibMemoized(n - 2);
+        }
+
         //Recursion: Davis' Staircase
         static int[] cache = new int[36]; //Problem constraint
         public static int stepPermsCacheArray(int n) {

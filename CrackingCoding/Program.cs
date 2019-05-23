@@ -25,8 +25,10 @@ namespace CrackingCoding
             //int[] array = { 4, 2, 3, 1, 7, 6};
             //Node root = Node.treeFromArray(array);
             //root.printTree(root,TreeOrder.postOrder);
-            string test = "([[)";
-            Console.WriteLine(StacksAndQueues.isBalanced(test));
+            //string test = "([[)";
+            //Console.WriteLine(StacksAndQueues.isBalanced(test));
+
+            Console.WriteLine(Recursion.stepPerms(5));
             Console.ReadLine();
 
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace CrackingCoding
 {
@@ -143,6 +144,17 @@ namespace CrackingCoding
                         
             return retInt;
         }
+
+        //Crossword Puzzle
+        public static string[] crosswordPuzzle(string[] crossword, string words) {
+            string[] wordPlaces = words.Split(';');
+            Enumerable.OrderBy(wordPlaces, x=> x.Length);
+
+            return null;
+
+
+        }
+
 
 
         #endregion

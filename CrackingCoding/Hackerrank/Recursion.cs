@@ -147,13 +147,155 @@ namespace CrackingCoding
 
         //Crossword Puzzle
         public static string[] crosswordPuzzle(string[] crossword, string words) {
-            string[] wordPlaces = words.Split(';');
-            Enumerable.OrderBy(wordPlaces, x=> x.Length);
+            //idea: recursively checks if we can put the word on horizontal or vertical
+            string[] wordArray = words.Split(';');
+            int matrixSize = 10;
+            char[][] crossWordMatrix = new char[matrixSize][];
 
-            return null;
+            for (int i = 0; i < matrixSize; i++)
+            {
+                char[] tmp = crossword[i].ToCharArray();
+                crossWordMatrix[i] = tmp;
+            }
 
+            var solution = solveCrosswordPuzzle(crossWordMatrix, wordArray, 0, matrixSize);
+
+            string[] ret = new string[matrixSize];
+
+            StringBuilder sb2 = new StringBuilder();
+
+            for (int row = 0; row < matrixSize; row++)
+            {
+                for (int col = 0; col < matrixSize; col++)
+                {
+                    sb2.Append(solution[row][col]);
+                }
+                ret[row] = sb2.ToString();
+                sb2.Clear();
+            }
+            printCrossWord(ret, 10);
+
+            return ret;
 
         }
+
+        static char[][] solveCrosswordPuzzle(char[][] crossword, string[] words, int index, int matrixSize)
+        {
+            if(index < words.Length)
+            {
+                string currentWord = words[index]; 
+                int max = matrixSize - currentWord.Length;
+
+                //check if we can put word vertically
+                for (int i = 0; i < matrixSize; i++)
+                {
+                    for (int j = 0; j <= max; j++)
+                    {
+                        char[][] tmp = checkVertical(j, i, crossword, currentWord);
+
+                        if (tmp[0][0] != '$')
+                        {
+                            solveCrosswordPuzzle(tmp, words, index + 1, matrixSize);
+                        }
+                        else
+                        {
+                            tmp[0][0] = '+';
+                        }
+                    }
+                }
+
+                //check if we can put word horizontally
+                for (int i = 0; i < matrixSize; i++)
+                {
+                    for (int j = 0; j <= max; j++)
+                    {
+                        var tmp = checkHorizontal(i, j, crossword, currentWord);
+
+                        if (tmp[0][0] != '$')
+                        {
+                            solveCrosswordPuzzle(tmp, words, index + 1, matrixSize);
+                        }
+                        else
+                        {
+                            tmp[0][0] = '+';
+                        }
+                    }
+                }
+
+            } else
+            {
+                //solved!
+                for (int i = 0; i < matrixSize; i++)
+                {
+                    for (int j = 0; j < matrixSize; j++)
+                    {
+                        Console.Write(crossword[i][j]);
+                    }
+                    Console.WriteLine();
+                }
+                return crossword;
+
+            }
+
+            return crossword;
+
+        }
+
+        //prints the crossword on console
+        public static void printCrossWord(string[] crossword, int size)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    Console.Write(crossword[i][j]);
+                }
+                Console.WriteLine();
+            }
+        }
+        //check if it`s possible to put one word in a horizontal position
+        static char[][] checkHorizontal(int rowPos, int colPos, char[][] crossword, string word) {
+            int size = word.Length;
+
+            for (int i = 0; i < size; i++)
+            {
+                //put on horizontal => fixed row and variable col
+                if( crossword[rowPos][colPos + i] == '-' ||
+                    crossword[rowPos][colPos + i] == word[i] )
+                {
+                    crossword[rowPos][colPos + i] = word[i];
+                } else {
+                    //Marker to show we can't place this word horizontally
+                    crossword[0][0] = '$';
+                    return crossword;
+                }
+            }
+
+            return crossword;
+        }
+        //check if it`s possible to put one word in a vertical position
+        static char[][] checkVertical(int rowPos, int colPos, char[][] crossword, string word)
+        {
+            int size = word.Length;
+
+            for (int i = 0; i < size; i++)
+            {
+                if (crossword[rowPos + i][colPos] == '-' ||
+                    crossword[rowPos + i][colPos] == word[i])
+                {
+                    crossword[rowPos + i][colPos] = word[i];
+                }
+                else
+                {
+                    //Marker to show we can't place this word horizontally
+                    crossword[0][0] = '$';
+                    return crossword;
+                }
+            }
+
+            return crossword;
+        }
+
 
 
 

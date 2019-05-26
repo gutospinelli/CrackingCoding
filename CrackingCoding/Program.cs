@@ -41,7 +41,7 @@ namespace CrackingCoding
             //Console.WriteLine(i);
             //Console.WriteLine(j);
             //Console.WriteLine(k);
-            
+
             //// Get the elapsed time as a TimeSpan value.
             //TimeSpan ts = stopWatch.Elapsed;
 
@@ -62,7 +62,7 @@ namespace CrackingCoding
             //Console.WriteLine(i);
             //Console.WriteLine(j);
             //Console.WriteLine(k);
-            
+
 
             //// Get the elapsed time as a TimeSpan value.
             //ts = stopWatch.Elapsed;
@@ -73,6 +73,25 @@ namespace CrackingCoding
             //    ts.Milliseconds / 10);
             //Console.WriteLine("RunTime " + elapsedTime);
 
+
+
+
+            string[] array = new string[10];
+            array[0] = "+-++++++++";
+            array[1] = "+-++++++++";
+            array[2] = "+-------++";
+            array[3] = "+-++++++++";
+            array[4] = "+-++++++++";
+            array[5] = "+------+++";
+            array[6] = "+-+++-++++";
+            array[7] = "+++++-++++";
+            array[8] = "+++++-++++";
+            array[9] = "++++++++++";
+
+            string words = "AGRA;NORWAY;ENGLAND;GWALIOR";
+
+
+            Console.WriteLine(Recursion.crosswordPuzzle(array,words));
             Console.ReadLine();
 
         }

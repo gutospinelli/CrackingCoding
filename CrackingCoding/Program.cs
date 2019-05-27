@@ -1,6 +1,9 @@
 ﻿using CrackingCoding.Data_Structures;
 using System;
 using System.Diagnostics;
+using System.Collections;
+using System.Collections.Generic;
+using static CrackingCoding.Hackerrank;
 
 namespace CrackingCoding
 {
@@ -74,24 +77,53 @@ namespace CrackingCoding
             //Console.WriteLine("RunTime " + elapsedTime);
 
 
+            //string[] array = new string[10];
+            //array[0] = "+-++++++++";
+            //array[1] = "+-++++++++";
+            //array[2] = "+-------++";
+            //array[3] = "+-++++++++";
+            //array[4] = "+-++++++++";
+            //array[5] = "+------+++";
+            //array[6] = "+-+++-++++";
+            //array[7] = "+++++-++++";
+            //array[8] = "+++++-++++";
+            //array[9] = "++++++++++";
+
+            //string words = "AGRA;NORWAY;ENGLAND;GWALIOR";
 
 
-            string[] array = new string[10];
-            array[0] = "+-++++++++";
-            array[1] = "+-++++++++";
-            array[2] = "+-------++";
-            array[3] = "+-++++++++";
-            array[4] = "+-++++++++";
-            array[5] = "+------+++";
-            array[6] = "+-+++-++++";
-            array[7] = "+++++-++++";
-            array[8] = "+++++-++++";
-            array[9] = "++++++++++";
-
-            string words = "AGRA;NORWAY;ENGLAND;GWALIOR";
+            //Console.WriteLine(Recursion.crosswordPuzzle(array,words));
 
 
-            Console.WriteLine(Recursion.crosswordPuzzle(array,words));
+            //Input: 5, 2, 4, 1, 5
+            //Answer: 1
+            EarliestEvent events = new EarliestEvent();
+            events.VisitEvent(5);
+            events.VisitEvent(2);
+            events.VisitEvent(4);
+            events.VisitEvent(1);
+            events.VisitEvent(5);
+            Console.WriteLine("Earliest Visitor: " + events.EarliestVisitor());
+
+
+            Cylinder c1 = new Cylinder(8);
+            Cylinder c2 = new Cylinder(7);
+            Cylinder c3 = new Cylinder(6);
+            Cylinder c4 = new Cylinder(5);
+            Cylinder c5 = new Cylinder(4);
+            Cylinder c6 = new Cylinder(3);
+
+            List<ICylinder> list = new List<ICylinder>();
+            list.Add(c1);
+            list.Add(c2);
+            list.Add(c3);
+            list.Add(c4);
+            list.Add(c5);
+            list.Add(c6);
+
+            var result = SplitInStacks(list,3);
+            Console.WriteLine("Shelves Balanced:");
+            printShelves(result);
             Console.ReadLine();
 
         }

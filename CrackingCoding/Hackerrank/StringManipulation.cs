@@ -189,39 +189,52 @@ namespace CrackingCoding
 
         // Common Child 
         public static int commonChild(string s1, string s2) {
-        //s1, s2: two equal length strings
-            int indexS1 = 0;
-            int indexS2 = 0;
-            int lenght = s1.Length;
-            int childSize = 0;
-            StringBuilder sb = new StringBuilder();
-            bool[] usedCharS1 = new bool[lenght];
+            
+            //HARRY 
+            //SALLY
+                       
+            //Matrix Start
+            //   HARRY
+            //  000000
+            //S 0
+            //A 0
+            //L 0
+            //L 0
+            //Y 0
 
-            while (indexS2 < lenght)
+            //Matrix End
+            //i   012345
+            //j    HARRY(s1)
+            //0   000000
+            //1 S 000000
+            //2 A 001111
+            //3 L 001111
+            //4 L 001111
+            //5 Y 001112
+            //s2
+
+            int[,] matrix = new int[s1.Length + 1, s2.Length + 1];
+            
+            // Location in s2 (Left)
+            for (int i = 0; i <= s2.Length; i++)
             {
-                char c2 = s2[indexS2];
-
-                for(int i = indexS1; i < lenght; i++)
+                // Location in s1 (Top)
+                for (int j = 0; j <= s1.Length; j++)
                 {
-                    if(s1[i] == c2 && !usedCharS1[i])
-                    {
-                        childSize++;
-                        sb.Append(c2);
-                        indexS1 = i+1;
-                        break;
-                        //Test VS2019Mac
-
-                    } 
+                    if (i == 0 || j == 0)
+                        matrix[i, j] = 0;
+                    else if (s1[j - 1] == s2[i - 1])
+                        matrix[i, j] = matrix[i - 1, j - 1] + 1;
+                    else
+                        matrix[i, j] = Math.Max(matrix[i - 1, j], matrix[i, j - 1]);
                 }
-
-                indexS2++;
             }
 
-            Console.WriteLine(sb.ToString());
-
-            return childSize;
-
+            return matrix[s1.Length, s2.Length];
         }
+
+
+
         #endregion
     }
 }

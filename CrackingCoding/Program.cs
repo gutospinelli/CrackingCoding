@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using static CrackingCoding.Hackerrank;
+using System.Linq;
 
 namespace CrackingCoding
 {
@@ -97,35 +98,44 @@ namespace CrackingCoding
 
             //Input: 5, 2, 4, 1, 5
             //Answer: 1
-            EarliestEvent events = new EarliestEvent();
-            events.VisitEvent(5);
-            events.VisitEvent(2);
-            events.VisitEvent(4);
-            events.VisitEvent(1);
-            events.VisitEvent(5);
-            Console.WriteLine("Earliest Visitor: " + events.EarliestVisitor());
+            //EarliestEvent events = new EarliestEvent();
+            //events.VisitEvent(5);
+            //events.VisitEvent(2);
+            //events.VisitEvent(4);
+            //events.VisitEvent(1);
+            //events.VisitEvent(5);
+            //Console.WriteLine("Earliest Visitor: " + events.EarliestVisitor());
 
 
-            Cylinder c1 = new Cylinder(8);
-            Cylinder c2 = new Cylinder(7);
-            Cylinder c3 = new Cylinder(6);
-            Cylinder c4 = new Cylinder(5);
-            Cylinder c5 = new Cylinder(4);
-            Cylinder c6 = new Cylinder(3);
+            //Cylinder c1 = new Cylinder(8);
+            //Cylinder c2 = new Cylinder(7);
+            //Cylinder c3 = new Cylinder(6);
+            //Cylinder c4 = new Cylinder(5);
+            //Cylinder c5 = new Cylinder(4);
+            //Cylinder c6 = new Cylinder(3);
 
-            List<ICylinder> list = new List<ICylinder>();
-            list.Add(c1);
-            list.Add(c2);
-            list.Add(c3);
-            list.Add(c4);
-            list.Add(c5);
-            list.Add(c6);
+            //List<ICylinder> list = new List<ICylinder>();
+            //list.Add(c1);
+            //list.Add(c2);
+            //list.Add(c3);
+            //list.Add(c4);
+            //list.Add(c5);
+            //list.Add(c6);
 
-            var result = SplitInStacks(list,3);
-            Console.WriteLine("Shelves Balanced:");
-            printShelves(result);
+            //var result = SplitInStacks(list,3);
+            //Console.WriteLine("Shelves Balanced:");
+            //printShelves(result);
+            //Console.ReadLine();
+
+            int[] arr = { 4,3,17,11,2,4,132,271,11,3,2,272,127,206,88,18,131,113,132,88,20,3,214,5,15,11,2,9,102,2,206,14,254,90,3,131,154,2,215,9,20,293,127,20,180,272,6,112,11,100,201,219,157,271,140,2,56,294,287,261,268,29,14,141,129,128,213,243,180,271,122,132,98,15,7,89,169,161,218,290,294,298,200,208,249,60,3,140,132,149 };
+            Array.Sort(arr);
+
+            HashSet<int> hashset = new HashSet<int>(arr);
+
+            int[] b = arr.Distinct().ToArray();
+            foreach (int i in b)
+                Console.Write(i + ",");
             Console.ReadLine();
-
         }
     }
 

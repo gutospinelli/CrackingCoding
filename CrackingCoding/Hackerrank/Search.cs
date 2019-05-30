@@ -164,6 +164,60 @@ namespace CrackingCoding
             }
         }
 
+        //Pairs
+        public static int pairs(int k, int[] arr) {
+            int pairs = 0;
+            int i = 0;
+            int j = 1;
+            int size = arr.Length;
+
+            //Sort the array, so we can use 2 pointers to calculate the difference and act accordinly
+            Array.Sort(arr);
+
+            while(j < size)
+            {
+                int difference = arr[j] - arr[i];
+
+                if(difference == k)
+                {
+                    pairs++;
+                    //We can move forward the two pointers since there's no duplicates in the array (problem constraint)
+                    i++;
+                    j++;
+                }
+                else if(difference < k)
+                {
+                    //the difference is not yet k. So we can increase the bigger index
+                    j++;
+                }
+                else if(difference > k)
+                {
+                    //we surpassed k. So we can increase the smaller index
+                    i++;
+                }
+            }
+
+
+            return pairs;
+
+        }
+
+            public static int pairsNaive(int k, int[] arr) {
+            int pairs = 0;
+            for (int row = 0; row < arr.Length; row++)
+            {
+                for (int col = 0; col < arr.Length; col++)
+                {
+                    if(arr[col] - arr[row] == k)
+                    {
+                        pairs++;
+                    }
+                }
+            }
+            return pairs;
+
+        }
+
 
         #endregion
     }

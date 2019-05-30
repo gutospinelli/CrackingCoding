@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using static CrackingCoding.Trees;
+using System.Linq;
 
 namespace CrackingCoding
 {
@@ -202,7 +203,7 @@ namespace CrackingCoding
 
         }
 
-            public static int pairsNaive(int k, int[] arr) {
+        public static int pairsNaive(int k, int[] arr) {
             int pairs = 0;
             for (int row = 0; row < arr.Length; row++)
             {
@@ -218,6 +219,98 @@ namespace CrackingCoding
 
         }
 
+        public class Triplet : IEqualityComparer<Triplet>
+        {
+            public Triplet(int a, int b, int c)
+            {
+                this.a = a;
+                this.b = b;
+                this.c = c;
+            }
+
+            int a;
+            int b;
+            int c;
+
+            public bool Equals(Triplet x, Triplet y)
+            {
+                //string tripletX = x.a + "," + x.b + "," + x.c;
+                //string tripletY = y.a + "," + y.b + "," + y.c;
+
+                //return tripletX.Equals(tripletY);
+
+                return (x.a == y.a &&
+                        x.b == y.b &&
+                        x.c == y.c);
+            }
+
+            public int GetHashCode(Triplet obj)
+            {
+                string triplet = obj.a + "," + obj.b + "," + obj.c;
+                return triplet.GetHashCode();              
+            }
+        }
+
+        //Triple Sum
+        public static long triplets(int[] a, int[] b, int[] c) {
+            
+            long countTriplets = 0;
+            //Only distinct B matter. B >= a B >= c
+            HashSet<int> distinctB = new HashSet<int>(b);
+
+            Array.Sort(a);
+            Array.Sort(c);
+
+            HashSet<Triplet> triplets = new HashSet<Triplet>();
+
+            foreach (int bVal in distinctB)
+            {
+                
+                int[] tmpA = a.Where(v=> v <= bVal).ToArray();
+                int[] tmpC = c.Where(v=> v <= bVal).ToArray();
+
+                for (int i = 0; i < tmpA.Length; i++)
+                {
+                    for (int j = 0; j < tmpC.Length; j++)
+                    {
+                        Triplet tmp =  new Triplet(tmpA[i], bVal, tmpC[j]);
+
+                        if(triplets.Add(tmp))
+                        {
+                            countTriplets ++;
+                        } //else ==> do not count, duplicate
+
+                    }
+                }
+            }
+
+            return countTriplets;
+
+
+        }
+
+        private static long tripletsImproved(int[] a, int[] b, int[] c)
+        {
+            //Remove duplicates from arrays to avoid counting repeated triplets
+            //Sorts arrays to know when to stop (b Value must be greater or equal to both a and c values)
+            a = a.Distinct().OrderBy(f => f).ToArray();
+            b = b.Distinct().OrderBy(f => f).ToArray();
+            c = c.Distinct().OrderBy(f => f).ToArray();
+
+            long i = 0;
+            long j = 0;
+            long sum = 0;
+
+            foreach (var val in b)
+            {
+                while (i < a.Length && a[i] <= val) i++; //number of elements in a lessOrEqual to b value (A)
+                while (j < c.Length && c[j] <= val) j++; //number of elements in c lessOrEqual to b value (B)
+
+                sum += i * j; //for this b value, distinct triplets will be (A) * (B)
+            }
+
+            return sum;
+        }
 
         #endregion
     }

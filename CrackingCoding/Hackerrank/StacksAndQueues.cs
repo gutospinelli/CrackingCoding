@@ -54,6 +54,57 @@ namespace CrackingCoding
 
         //Queues: A tale of Two Stacks
         //Solution: Class Data_Structures.QueueTwoStacks
+
+        //Largest Rectangle
+        public static long largestRectangle(int[] h) {
+            long maxArea = long.MinValue;
+            int minPos = 0; 
+            int maxPos = h.Length - 1;
+            
+
+
+            for (int i = 0; i < h.Length - 1; i++)
+            {
+                long currValue = h[i];
+                int left = i-1;
+                int right = i+1;
+                int multipliter = 1;
+
+                while(left >= minPos)
+                {
+                    if(h[left] >= currValue) {
+                        multipliter++;
+                        left--;
+                    } else
+                    {
+                        break;
+                    }
+                }
+
+                while(right <= maxPos)
+                {
+                    if(h[right] >= currValue)
+                    {
+                        multipliter++;
+                        right++;
+                    } else
+                    {
+                        break;
+                    }
+                }
+
+                long tmpAreaI = currValue * multipliter;
+                if(tmpAreaI >= maxArea)
+                {
+                    maxArea = tmpAreaI;
+                }              
+                
+            }
+
+            return maxArea;
+
+
+        }
         
         #endregion
     }

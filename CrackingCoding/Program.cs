@@ -127,15 +127,20 @@ namespace CrackingCoding
             //printShelves(result);
             //Console.ReadLine();
 
-            int[] arr = { 4,3,17,11,2,4,132,271,11,3,2,272,127,206,88,18,131,113,132,88,20,3,214,5,15,11,2,9,102,2,206,14,254,90,3,131,154,2,215,9,20,293,127,20,180,272,6,112,11,100,201,219,157,271,140,2,56,294,287,261,268,29,14,141,129,128,213,243,180,271,122,132,98,15,7,89,169,161,218,290,294,298,200,208,249,60,3,140,132,149 };
-            Array.Sort(arr);
+            //int[] arr = { 4,3,17,11,2,4,132,271,11,3,2,272,127,206,88,18,131,113,132,88,20,3,214,5,15,11,2,9,102,2,206,14,254,90,3,131,154,2,215,9,20,293,127,20,180,272,6,112,11,100,201,219,157,271,140,2,56,294,287,261,268,29,14,141,129,128,213,243,180,271,122,132,98,15,7,89,169,161,218,290,294,298,200,208,249,60,3,140,132,149 };
+            //Array.Sort(arr);
 
-            HashSet<int> hashset = new HashSet<int>(arr);
+            //HashSet<int> hashset = new HashSet<int>(arr);
 
-            int[] b = arr.Distinct().ToArray();
-            foreach (int i in b)
-                Console.Write(i + ",");
-            Console.ReadLine();
+            //int[] b = arr.Distinct().ToArray();
+            //foreach (int i in b)
+            //    Console.Write(i + ",");
+            //Console.ReadLine();
+
+            int[] arr = {8979, 4570, 6436, 5083, 7780, 3269, 5400, 7579, 2324, 2116};
+            var res = StacksAndQueues.largestRectangle(arr);
+            Console.WriteLine(res);
+
         }
     }
 

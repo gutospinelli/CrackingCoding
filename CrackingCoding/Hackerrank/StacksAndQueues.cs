@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CrackingCoding
@@ -105,6 +106,50 @@ namespace CrackingCoding
 
 
         }
+
+        //Min Max Riddle
+
+        public static long[] riddle(long[] arr) {
+
+            long[] ret = new long[arr.Length];
+            int retIndex = 0;
+		    // Consider all windows of different  
+            // sizes starting from size 1 
+            for (int k = 1; k <= arr.Length; k++) 
+            { 
+              
+                // Initialize max of min for  
+                // current window size k 
+                long maxOfMin = long.MinValue; 
+      
+                // Traverse through all windows 
+                // of current size k 
+                for (int i = 0; i <= arr.Length - k; i++) 
+                { 
+                  
+                    // Find minimum of current window 
+                    long min = arr[i]; 
+                    for (int j = 1; j < k; j++) 
+                    { 
+                        if (arr[i + j] < min) 
+                            min = arr[i + j]; 
+                    } 
+      
+                    // Update maxOfMin if required 
+                    if (min > maxOfMin) 
+                        maxOfMin = min; 
+                } 
+      
+                // Print max of min for current window size 
+                //Console.Write(maxOfMin + " "); 
+                ret[retIndex] = maxOfMin;
+                retIndex++;
+
+            } 
+
+            return ret;
+	    }
+
         
         #endregion
     }

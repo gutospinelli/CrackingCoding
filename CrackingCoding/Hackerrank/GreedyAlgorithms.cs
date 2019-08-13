@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CrackingCoding
@@ -84,6 +85,18 @@ namespace CrackingCoding
 
             return maxLuckBalance;
 
+        }
+
+        public static int luckBalanceLinq(int k, int[][] contests) {
+            var minLosses = contests
+                .Where(x => x[1] == 1)
+                .OrderByDescending(x => x[0])
+                .Skip(k)
+                .Sum(x => x[0]);
+
+            var totalVal = contests.Sum(x => x[0]);
+
+            return totalVal - (minLosses * 2);
         }
         #endregion
 

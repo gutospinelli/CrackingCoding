@@ -98,6 +98,46 @@ namespace CrackingCoding
 
             return totalVal - (minLosses * 2);
         }
+
+        //Greedy Florist
+        public static int getMinimumCost(int k, int[] c) {
+            int minCost = int.MaxValue;
+            int numFlowers = c.Length;
+            int numFriends = k;
+
+
+            //if we have more (or equal) friends than flowers, we just buy them at original prices
+            if(numFriends >= numFlowers)
+            {
+                minCost = c.Sum();
+            } else
+            {              
+                //Sort array descending
+                c = c.OrderByDescending(e => e).ToArray();
+
+                int purchaseLevel = 0;
+                minCost = 0;
+                int friendCount = 0;
+
+                //greedy algorithm: keep buying the most expensive ones in minimum purchase level until no more flowers to buy
+                for (int i = 0; i < numFlowers; i++)
+                {
+                    minCost = minCost + (c[i] * (purchaseLevel + 1));
+                    friendCount ++;
+
+                    if(friendCount == numFriends)
+                    {
+                        friendCount = 0;
+                        purchaseLevel++;
+                    }
+                }
+
+            }
+
+            return minCost;
+        }
+
+
         #endregion
 
 

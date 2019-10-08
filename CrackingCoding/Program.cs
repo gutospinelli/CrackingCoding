@@ -137,8 +137,8 @@ namespace CrackingCoding
             //    Console.Write(i + ",");
             //Console.ReadLine();
 
-            int[] arr = {8979, 4570, 6436, 5083, 7780, 3269, 5400, 7579, 2324, 2116};
-            var res = StacksAndQueues.largestRectangle(arr);
+            int[] arr = {100, 200, 300, 350, 400, 401, 402};
+            var res = GreedyAlgorithms.maxMin(3,arr);
             Console.WriteLine(res);
 
         }

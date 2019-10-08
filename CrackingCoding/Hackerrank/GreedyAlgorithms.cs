@@ -137,6 +137,36 @@ namespace CrackingCoding
             return minCost;
         }
 
+        //MaxMin
+        public static int maxMin(int k, int[] arr) {
+            int unfairness = int.MaxValue;
+            int localFairness = 0;
+            int n = arr.Length;
+            int left = 0;
+            int right = k;
+            
+            //If array does not have at least two elements, we cannot calculate unfairness
+            if (n<2)
+            {
+                return -1; //error
+
+            } else
+            {
+                //Sort the array
+                arr = arr.OrderBy(e => e).ToArray();
+                //Calculate local fairnest and if it's min, update "global" unfairness
+                while (right <= n && left < n)
+                {
+                    localFairness = arr[right-1] - arr[left];
+                    if(localFairness < unfairness)
+                        unfairness = localFairness;
+                    left++;
+                    right++;
+                }              
+            }
+
+            return unfairness;           
+        }
 
         #endregion
 

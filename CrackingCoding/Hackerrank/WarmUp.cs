@@ -115,6 +115,65 @@ namespace CrackingCoding
             } 
             return count;
         }
+
+        //Grading Students
+        public static List<int> gradingStudents(List<int> grades)
+        {
+            List<int> ret = new List<int>();
+
+            foreach (int i in grades)
+            {
+                if(i<38)
+                {
+                    ret.Add(i);
+                } else
+                {
+                    int remainder = i%5;
+                    if(remainder < 3)
+                    {
+                        ret.Add(i);
+                    } else
+                    {
+                        var roundVal = 5 - remainder;
+                        ret.Add(i+roundVal);
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        //Breaking the Records
+        public static int[] breakingRecords(int[] scores) {
+            int[] ret = {0,0};
+
+            if(scores.Length <= 1)
+                return ret;
+
+            int highestScore = scores[0]; 
+            int lowestScore = scores[0]; 
+            int currentScore;
+
+            for (int i = 1;i<scores.Length; i++)
+            {
+                currentScore = scores[i];
+
+                if(currentScore > highestScore)
+                {
+                    ret[0]++; //count a breaking in highest score
+                    highestScore = currentScore; //updates new highest score
+                } 
+
+                if (currentScore < lowestScore)
+                {
+                    ret[1]++; //count a breaking in lowest score
+                    lowestScore = currentScore; //updates new lowest score
+                }
+                
+            }
+            
+            return ret;
+        }
         #endregion
     }
 }

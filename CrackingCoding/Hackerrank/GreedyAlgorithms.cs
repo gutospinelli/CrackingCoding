@@ -168,6 +168,31 @@ namespace CrackingCoding
             return unfairness;           
         }
 
+        // Complete the reverseShuffleMerge function below.
+        public static string reverseShuffleMerge(string s) {
+            String ret = String.Empty;
+            var sOrdered = String.Concat(s.OrderBy(c => c));
+
+            int left = 0;
+            int right = sOrdered.Length;
+
+            while (left < s.Length - 1)
+            {
+                if(sOrdered[left].Equals(sOrdered[left+1]))
+                {
+                    ret = ret + sOrdered[left];
+                    left = left + 2;
+                } else
+                {
+                    left = left + 1;
+                }
+            }
+
+            return ret;
+            
+
+        }
+
         #endregion
 
 

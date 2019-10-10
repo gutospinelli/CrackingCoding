@@ -137,10 +137,16 @@ namespace CrackingCoding
             //    Console.Write(i + ",");
             //Console.ReadLine();
 
-            int[] arr = {100, 200, 300, 350, 400, 401, 402};
-            var res = GreedyAlgorithms.maxMin(3,arr);
-            Console.WriteLine(res);
+            //int[] arr = {100, 200, 300, 350, 400, 401, 402};
+            //var res = GreedyAlgorithms.maxMin(3,arr);
 
+            //string s = "abcdefgabcdefg";
+            //string ret = GreedyAlgorithms.reverseShuffleMerge(s);
+            //Console.WriteLine(ret);
+
+            int[] arr = {10, 5, 20, 20, 4, 5, 2, 25, 1};
+            int[] ret = WarmUp.breakingRecords(arr);
+            Array.ForEach(ret, Console.WriteLine);
         }
     }
 

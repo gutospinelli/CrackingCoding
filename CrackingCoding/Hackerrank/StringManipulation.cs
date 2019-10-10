@@ -233,6 +233,35 @@ namespace CrackingCoding
             return matrix[s1.Length, s2.Length];
         }
 
+        // Game of Thrones - I
+        public static string gameOfThrones(string s) {
+            int oddCount = 0;
+
+            //Fill a dict with number of char occurrences
+            Dictionary<char,int> dict = new Dictionary<char, int>();
+            foreach (char c in s)
+            {
+                if(dict.ContainsKey(c))
+                {
+                    //increase the count for that char
+                    dict[c]++;
+                } else
+                {
+                    //insert first occurrency of char
+                    dict[c] = 1;
+                }
+            }
+            //Search count for each char to see if we can form palindromes. To form a palimdrom we must have 0 or 1 odd at max
+            foreach (int i in dict.Values)
+            {
+                if(i%2 != 0)
+                    oddCount++;
+            }
+
+
+            return oddCount > 1 ? "NO" : "YES";
+        }
+
 
 
         #endregion
